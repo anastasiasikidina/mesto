@@ -11,6 +11,6 @@
 }
 
 .place__button-like:active {
-  filter: opacity(1) !important;
+  filter: opacity(1);
   background-image: url("../../../images/like-button-active.svg");
 }
