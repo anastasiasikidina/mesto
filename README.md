@@ -5,7 +5,7 @@
 
 использовались: CSS, HTML, JS
 
-* [Ссылка на проэкт](https://anastasiasikidina.github.io/mesto/)
+* [Ссылка на проект](https://anastasiasikidina.github.io/mesto/)
 
 
 
