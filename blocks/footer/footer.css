@@ -1,9 +1,11 @@
-.footer {
-    margin: 67px 0 60px;
+@media all and (max-width: 426px) {
+  .footer {
+    max-width: 282px;
   }
-  
-  @media screen and (max-width: 934px) {
-    .footer {
-      margin: 48px 0 36px;
-    }
+}
+
+@media all and (min-width: 427px) {
+  .footer {
+    max-width: 880px;
   }
+}
