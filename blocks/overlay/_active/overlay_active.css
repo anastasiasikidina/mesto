@@ -1,4 +1,4 @@
-.page__overlay_active {
+.overlay_active {
   display: flex;
   visibility: visible;
   opacity: 1;

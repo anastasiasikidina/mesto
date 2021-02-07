@@ -1,4 +1,4 @@
-.page__overlay {
+.overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 798px) {
-  .page__overlay {
+  .overlay {
     padding-top: 123px;
   }
 }
