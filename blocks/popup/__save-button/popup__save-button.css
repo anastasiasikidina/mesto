@@ -1,7 +1,7 @@
 .popup__save-button {
   background: #000000;
   border-radius: 2px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", ‘Arial’, sans-serif;
   font-weight: normal;
   text-align: center;
   color: #ffffff;
