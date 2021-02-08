@@ -9,27 +9,22 @@ let jobField = root.querySelector('.profile__profession');
 let nameField = root.querySelector('.profile__name');
 
 let openPopup = (e) => {
-    e.preventDefault();
     nameInput.value = nameField.textContent;
     jobInput.value = jobField.textContent;
+    popup.classList.contains("popup_opened");
     popup.classList.toggle("popup_opened");
-
 }
 
-/*const closePopup = (e) => {
-    e.preventDefault();
-    popup.classList.toggle("popup_opened"); тут я немного запуталась - нужно совсем убрать это из кода(все что закомитела или толлько последнюю функцию с toggle)?
-
-}*/
-
-const submitHandler = (e) => {
+let submitHandler = (e) => {
     e.preventDefault();
     nameField.textContent = nameInput.value;
     jobField.textContent = jobInput.value;
-    popup.classList.toggle("popup_opened");/*тут уже тоже непонятки какую функцию надо вызвать :( */
-
+    console.log(popup.classList);
 }
 
 editButton.addEventListener("click", openPopup);
-closeButton.addEventListener("click", closePopup);
+closeButton.addEventListener("click", openPopup);
 formElement.addEventListener("submit", submitHandler);
+
+// пока js мне дается крайне тяжело :(
+    //извините за глупые ошибки( 

@@ -1,9 +1,8 @@
 .popup__container {
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);/*к сожалению я не нашла рабочей информации как сделать центрирование другим способом, 
-  во всех источниках пишут именно об этом способе(в том числе одногруппники)*/
-  position: fixed;
+  transform: translate(-50%, -50%);
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
