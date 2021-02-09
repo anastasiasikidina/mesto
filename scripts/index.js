@@ -9,22 +9,32 @@ let jobField = root.querySelector('.profile__profession');
 let nameField = root.querySelector('.profile__name');
 
 let openPopup = (e) => {
-    nameInput.value = nameField.textContent;
-    jobInput.value = jobField.textContent;
-    popup.classList.contains("popup_opened");
-    popup.classList.toggle("popup_opened");
+    popup.classList.toggle("popup_opened")
+    if (popup.classList.contains("popup_opened")) {
+        nameInput.value = nameField.textContent;
+        jobInput.value = jobField.textContent;
+    }
 }
+
+//или вот так? после прочтения статей, подумала, что можно немного изменить вид функции, чтобы она стала понятней
+
+//насколько я поняла, эта функция должна открывать попап и если он открыт, то добавлять информацию
+
+/*function openPopup() {
+    popup.classList.toggle("popup_opened")
+    if (popup.classList.contains("popup_opened")) {
+        nameInput.value = nameField.textContent;
+        jobInput.value = jobField.textContent;
+    }
+}*/
 
 let submitHandler = (e) => {
     e.preventDefault();
     nameField.textContent = nameInput.value;
     jobField.textContent = jobInput.value;
-    console.log(popup.classList);
+    openPopup();
 }
 
 editButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", openPopup);
 formElement.addEventListener("submit", submitHandler);
-
-// пока js мне дается крайне тяжело :(
-    //извините за глупые ошибки( 
