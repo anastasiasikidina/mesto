@@ -11,7 +11,10 @@
   max-width: 298px;
   font-size: 18px;
   line-height: 21.78px;
+<<<<<<< HEAD
   margin-top: 16px;
+=======
+>>>>>>> 7f3a015ed8cec70d8729b8f5820111024c06af1a
 }
 
 @media all and (min-width: 427px) {
@@ -23,6 +26,10 @@
 @media all and (min-width: 600px) {
   .profile__profession {
     max-width: 260px;
+<<<<<<< HEAD
+=======
+    margin-top: 16px;
+>>>>>>> 7f3a015ed8cec70d8729b8f5820111024c06af1a
     text-align: start;
   }
 }
