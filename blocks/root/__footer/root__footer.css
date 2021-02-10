@@ -20,8 +20,6 @@
 
 @media all and (min-width: 880px) {
   .root__footer {
-    margin-top: 67px;
-    margin-bottom: 60px;
     margin-left: auto;
   }
 }

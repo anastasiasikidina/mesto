@@ -11,20 +11,18 @@
   max-width: 298px;
   font-size: 18px;
   line-height: 21.78px;
-  text-align: start;
-
+  margin-top: 16px;
 }
 
 @media all and (min-width: 427px) {
   .profile__profession {
     max-width: 230px;
-    margin-top: 16px;
   }
 }
 
 @media all and (min-width: 600px) {
   .profile__profession {
     max-width: 260px;
-    margin-top: 16px;
+    text-align: start;
   }
 }
