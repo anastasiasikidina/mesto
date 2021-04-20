@@ -1,109 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
 </head>
-
 <body class="root">
-    <header class="header root__header">
-        <img class="header__logo" src="./images/logo.svg" alt="логотип">
+  <div class="root__cover">
+    <header class="header">
+      <img class="header__logo" src="./images/лого.svg" alt="логотип">
     </header>
-    <main>
-        <section class="profile root__profile">
-            <img class="profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
-            <div class="profile__info-block">
-                <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button type="button" class="button profile__edit-button"></button>
-                </div>
-                <p class="profile__profession">Исследователь океана</p>
-            </div>
-            <button type="button" class="profile__add-button button"></button>
-        </section>
 
-        <section class="place-container root__place-container">
-            <div class="place">
-                <img class="place__image" src="./images/Karachaevo.jpg" alt="Карачаево-Черкесия">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Карачаево-Черкесия
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img class="place__image" src="./images/elbrus.jpg" alt="Эльбрус">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Гора Эльбрус
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img class="place__image" src="images/dombai.jpg" alt="Домбай">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Домбай
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img class="place__image" src="images/elbrus.jpg" alt="Эльбрус">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Гора Эльбрус
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img class="place__image" src="./images/dombai.jpg" alt="Домбай">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Домбай
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-            <div class="place">
-                <img class="place__image" src="./images/Karachaevo.jpg" alt="Карачаево-Черкесия">
-                <div class="place__header">
-                    <h2 class="place__title">
-                        Карачаево-Черкесия
-                    </h2>
-                    <button type="button" class="button place__button-like"></button>
-                </div>
-            </div>
-        </section>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="images/avatar.jpg" alt="Жак-Ив Кусто">
+        <h1 class="profile__name">Жак-Ив Кусто</h1> 
+        <button class="profile__edit-button" aria-label="edit-profile" type="button"></button>
+        <p class="profile__profession">Исследователь океана</p>
+        <button class="profile__add-button" aria-label="add-foto" type="button"></button>
+      </section>
+
+      <section class="gallery">
+        <ul class="gallery__cards">
+        </ul>
+      </section>	  
     </main>
-
-    <footer class="footer root__footer">
-        <p class="footer__copyright">
-            © 2020 Mesto Russia
-        </p>
-    </footer>
     
-    <div class="popup">
-        <div class="popup__container">
-            <button type="button" class="button popup__close-button"></button>
-            <form class="popup__form" name="popup-form">
-                <h2 class="popup__header">Редактировать профиль</h2>
-                <div>
-                    <input type="text" name="name" class="popup__input">
-                    <input type="text" name="profession" class="popup__input">
-                </div>
-                <button type="submit" class="button popup__save-button" value="Сохранить">Сохранить</button>
-            </form>
-        </div>
+    <footer class="footer">
+      <p class="footer__copyright">© 2021 Mesto Russia</p>
+    </footer>
 
+    <div class="popup popup_edit_profile">
+    <div class="popup__overlay popup__overlay-profile"></div>
+      <div class="popup__content">
+        <button class="popup__close-button" type="reset" aria-label="Close"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="edit-profile" novalidate autocomplete="off">
+          <fieldset class="popup__form-discript">
+            <input type="text" class="popup__input popup__input_value_name" id="input_value_name"  name="edit-profile-name" value="name">
+            <input type="text" class="popup__input popup__input_value_job"  id="input_value_job" name="edit-profile-job" value="job">
+            <button class="popup__form-button" type="submit">Сохранить</button>
+          </fieldset>  
+        </form>
+      </div>
     </div>
-    <script src="./scripts/index.js"></script>
-</body>
+    
+    <div class="popup popup_add_card" > 
+    <div class="popup__overlay popup__overlay-add-card"></div>
+      <div class="popup__content">
+        <button class="popup__close-button popup__close-button_card" type="reset" aria-label="Close"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="edit-card">
+          <fieldset class="popup__form-discript">
+            <input type="text" class="popup__input popup__input_card_name" id="input_card_name" name="edit-card-name" placeholder="Название" value="">
+            <input type="url" class="popup__input popup__input_card_src" id="input_card_src" name="edit-card-link" placeholder="Ссылка на картинку" value="">
+            <button class="popup__form-button popup__form-button_add_card" type="submit">Создать</button>
+          </fieldset>  
+        </form>
+      </div>
+    </div>
 
+    <div class="popup popup_view_foto"> 
+    <div class="popup__overlay popup__overlay_background_opacity popup__overlay-view-foto"></div>
+      <div class="popup__content popup__content_view">
+        <button class="popup__close-button popup__close-button_view" type="reset" aria-label="Close"></button>
+        <figure class="popup__foto-content">
+          <img src="images/Карачаевск.png" alt="Карачаевск" class="popup__image">
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <template class="template">
+      <li class="gallery__card">
+        <img class="gallery__photo" src="images/Карачаевск.png" alt="">
+        <button class="gallery__delete-button" aria-label="delete" type="button"></button>
+        <div class="gallery__discript">
+          <h2 class="gallery__text">Карачаевск</h2>
+          <button class="gallery__like-button" aria-label="like" type="button"></button>
+        </div>
+      </li>
+    </template> 
+
+  </div>
+  <script src="scripts/initial-сards.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
 </html>
