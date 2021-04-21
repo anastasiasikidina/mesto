@@ -13,7 +13,6 @@ const closePopupProfileBtn = document.querySelector(".popup__close-button");
 const closePopupCardBtn = document.querySelector(".popup__close-button_card");
 const closePopupViewBtn = document.querySelector(".popup__close-button_view");
 
-const saveProfileButton = document.querySelector(".popup__form-button");
 const saveCardButton = document.querySelector(".popup__form-button_add_card");
 
 const formProfileElement = document.querySelector("form[name=edit-profile]");
@@ -64,6 +63,7 @@ function handleProfileSubmit(evt) {
   profileName.textContent = formName.value;
   profileJob.textContent = formJob.value;
   closePopup();
+  evt.preventDefault();
 }
 
 function handleCardSubmit(evt) {
@@ -74,8 +74,8 @@ function handleCardSubmit(evt) {
   galleryContainer.prepend(createCard(cardData))
   closePopup();
   saveCardButton.classList.add('popup__form-button_inactive');
-  saveCardButton.setAttribute('disabled', true);
   formCardElement.reset();
+  evt.preventDefault();
 }
 
 function createCard(cardData) {
@@ -98,13 +98,7 @@ initialCards.forEach(function (element) {
   galleryContainer.append(createCard(element));
 })
 
-
-const ProfileImput = ()  => {
-  const inputList = Array.from(formProfileElement.querySelectorAll('.popup__input'));
-}
-
 openPopupProfileBtn.addEventListener("click", function() {
-  ProfileImput();
   formName.value = profileName.textContent;
   formJob.value = profileJob.textContent;
   openPopup(popupProfile);

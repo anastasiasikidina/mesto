@@ -1,4 +1,3 @@
-//массив с данными
 const initialCards = [
   {
     name: 'Архыз',
