@@ -36,11 +36,21 @@ const photoTemplate = document.querySelector('template').content;
 
 function openPopup(item) {
   item.classList.add("popup_opened");
+  window.addEventListener('keydown', closePopupEsc)
 }
 
 const closePopup = () => {
   const openedPopup = document.querySelector('.popup_opened')
   openedPopup.classList.remove("popup_opened");
+  window.removeEventListener('keydown', closePopupEsc)
+}
+
+function closePopupEsc(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
+    window.removeEventListener('keydown', closePopupEsc)
+  }
 }
 
 function handleLike(evt) {
