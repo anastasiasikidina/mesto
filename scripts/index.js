@@ -36,7 +36,7 @@ const photoTemplate = document.querySelector('template').content;
 
 function openPopup(item) {
   item.classList.add("popup_opened");
-  window.addEventListener('keydown', closePopupEsc)
+  document.addEventListener('keydown', closePopupEsc)
 }
 
 const closePopup = () => {
@@ -49,7 +49,6 @@ function closePopupEsc(event) {
   if (event.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened')
     closePopup(openedPopup);
-    window.removeEventListener('keydown', closePopupEsc)
   }
 }
 
@@ -70,10 +69,10 @@ function handleLike(evt) {
 }
 
 function handleProfileSubmit(evt) {
+  evt.preventDefault();
   profileName.textContent = formName.value;
   profileJob.textContent = formJob.value;
   closePopup();
-  evt.preventDefault();
 }
 
 function handleCardSubmit(evt) {
@@ -83,7 +82,7 @@ function handleCardSubmit(evt) {
   }
   galleryContainer.prepend(createCard(cardData))
   closePopup();
-  saveCardButton.classList.add('popup__form-button_inactive');
+  saveCardButton.classList.add('disabled', inactiveButtonClass);
   formCardElement.reset();
   evt.preventDefault();
 }
