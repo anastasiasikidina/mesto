@@ -82,7 +82,8 @@ function handleCardSubmit(evt) {
   }
   galleryContainer.prepend(createCard(cardData))
   closePopup();
-  saveCardButton.classList.add('disabled', inactiveButtonClass);
+  saveCardButton.classList.add('popup__form-button_inactive');
+  saveCardButton.setAttribute('disabled', true);
   formCardElement.reset();
   evt.preventDefault();
 }
