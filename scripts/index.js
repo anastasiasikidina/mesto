@@ -1,7 +1,6 @@
-import {Card} from './card.js';
-import {initialCards} from './initialCards.js';
+import Card from './Card.js';
+import {initialCards} from './constants.js';
 import {FormValidator} from './FormValidator.js';
-
 
 const popupProfile = document.querySelector(".popup_edit_profile");
 const popupCard = document.querySelector(".popup_add_card");
@@ -47,7 +46,7 @@ function openPopup(item) {
 const closePopup = () => {
   const openedPopup = document.querySelector('.popup_opened')
   openedPopup.classList.remove("popup_opened");
-  window.removeEventListener('keydown', closePopupEsc)
+ // window.removeEventListener('keydown', closePopupEsc)
 }
 
 function closePopupEsc(event) {
@@ -55,6 +54,7 @@ function closePopupEsc(event) {
     const openedPopup = document.querySelector('.popup_opened')
     closePopup(openedPopup);
   }
+  evt.preventDefault();
 }
 
 function handleLike(evt) {
@@ -96,11 +96,11 @@ function handleCardSubmit(evt) {
 function createCard(cardData) {
   const photoElement = photoTemplate.querySelector('.gallery__card').cloneNode(true);
   const galleryPhoto = photoElement.querySelector('.gallery__photo');
-  const galleryText = photoElement.querySelector('.gallery__text');
+  const galleryName = photoElement.querySelector('.gallery__name');
   const galleryDeleteButton = photoElement.querySelector('.gallery__delete-button');
-  const galleryLikeButton =  photoElement.querySelector('.gallery__like-button')
+  const galleryLikeButton =  photoElement.querySelector('.gallery__like-button');
   galleryPhoto.src = cardData.link;
-  galleryText.textContent = cardData.name;
+  galleryName.textContent = cardData.name;
   galleryPhoto.alt = cardData.name;
   galleryLikeButton.addEventListener('click', handleLike);
   galleryDeleteButton.addEventListener('click', () => dropObject(photoElement)); 
