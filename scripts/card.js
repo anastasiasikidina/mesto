@@ -26,7 +26,7 @@
   
       _galleryName.textContent = this._name;
       _galleryPhoto.src = this._link;
-      _galleryPhoto.alt = this.name; // не совсем поняла, на что именно надо исправить имя
+      _galleryPhoto.alt = this._name; // теперь поняла, спасибо )
   
       this._setListeners(_galleryDeleteButton, _galleryLikeButton, _newCardImage);
   
@@ -51,5 +51,4 @@
     }
   }
   
-
 export default Card
