@@ -26,7 +26,7 @@
   
       _galleryName.textContent = this._name;
       _galleryPhoto.src = this._link;
-      _galleryPhoto.alt = this._name; // теперь поняла, спасибо )
+      _galleryPhoto.alt = this._name;
   
       this._setListeners(_galleryDeleteButton, _galleryLikeButton, _newCardImage);
   
@@ -52,3 +52,5 @@
   }
   
 export default Card
+
+//можете указать в коде где именно у меня ошибка в названии? я не вижу ошибки
