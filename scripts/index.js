@@ -53,7 +53,7 @@ popupProfileValidator.enableValidation();
 
 // Валидация попапа при добавлении карточки
 
-const formValidator = new FormValidator(config, popupCard);
+const popupCardValidator = new FormValidator(config, popupCard);
 popupCardValidator.enableValidation(); 
 
 

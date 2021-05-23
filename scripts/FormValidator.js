@@ -35,7 +35,7 @@ export default class FormValidator {
       });
     };
   
-    _changeButtonState() {
+    _changeButtonState(inputElement) {
       if (this._hasInvalidInput(inputElement)) {
         this.disableButtonSubmit();
       } else {
@@ -49,7 +49,7 @@ export default class FormValidator {
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
           this._checkInputValidity(inputElement);
-          this._changeButtonState();
+          this._changeButtonState(inputElement);
         });
       });
     };
@@ -61,7 +61,7 @@ export default class FormValidator {
   
     enableValidation() {
       this._setEventListeners();
-      evt.preventDefault();
+     // evt.preventDefault(); преподаватель сказал, что evt тут не нужен
     };
   
   };
