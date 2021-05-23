@@ -1,6 +1,6 @@
 import Card from './Card.js';
 import {initialCards} from './constants.js';
-import {FormValidator} from './FormValidator.js';
+import FormValidator from './FormValidator.js';
 
 const popupProfile = document.querySelector(".popup_edit_profile");
 const popupCard = document.querySelector(".popup_add_card");
@@ -37,6 +37,33 @@ const galleryContainer = document.querySelector(".gallery__cards");
 
 const photoTemplate = document.querySelector('template').content;
 
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__form-button',
+  inactiveButtonClass: 'popup__form-button_inactive',
+  inputErrorClass: 'popup__input_error',
+  errorClass: 'popup__form-message-error_active'
+}
+
+// Валидация попапа при редактировании профиля
+
+const popupProfileValidator = new FormValidator(config, popupProfile);
+popupProfileValidator.enableValidation();
+
+// Валидация попапа при добавлении карточки
+
+const formValidator = new FormValidator(config, popupCard);
+popupCardValidator.enableValidation(); 
+
+
+const initialCard = (data, cardSelector) => {
+  const card = new Card(data, cardSelector, handleCardClick);
+  const cardElement = card.initialCard();
+
+  return cardElement;
+};
+
 
 function openPopup(item) {
   item.classList.add("popup_opened");
@@ -46,6 +73,7 @@ function openPopup(item) {
 const closePopup = () => {
   const openedPopup = document.querySelector('.popup_opened')
   openedPopup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupEsc); 
 }
 
 function closePopupEsc(event) {

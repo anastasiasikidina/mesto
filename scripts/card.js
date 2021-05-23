@@ -1,4 +1,4 @@
- class Card {
+ export default class Card {
     constructor(data, cardSelector, handleCardClick) {
       this._name = data.name;
       this._link = data.link;
@@ -19,10 +19,10 @@
     createCard() {
       this._element = this._getTemplate();
   
-      const galleryName = element.querySelector('.gallery__name');
-      const galleryPhoto = element.querySelector('.gallery__photo');
-      const galleryDeleteButton = element.querySelector('.gallery__delete-button');
-      const galleryLikeButton = element.querySelector('.gallery__like-button');
+      this.galleryName = element.querySelector('.gallery__name');
+      this.galleryPhoto = element.querySelector('.gallery__photo');
+      this.galleryDeleteButton = element.querySelector('.gallery__delete-button');
+      this.galleryLikeButton = element.querySelector('.gallery__like-button');
   
       _galleryName.textContent = this._name;
       _galleryPhoto.src = this._link;
@@ -50,7 +50,3 @@
       });
     }
   }
-  
-export default Card
-
-//можете указать в коде где именно у меня ошибка в названии? я не вижу ошибки
