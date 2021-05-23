@@ -49,4 +49,4 @@
       this._handleCardClick(this._name, this._link);
       });
     }
-  }
+ }
