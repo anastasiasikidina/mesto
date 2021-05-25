@@ -37,7 +37,7 @@ const popupCaption = document.querySelector(".popup__caption");
 
 const galleryContainer = document.querySelector(".gallery__cards");
 
-const photoTemplate = document.querySelector("template").content;
+const photoTemplate = ".template";
 
 const config = {
   formSelector: ".popup__form",
@@ -58,10 +58,15 @@ popupProfileValidator.enableValidation();
 const popupCardValidator = new FormValidator(config, popupCard);
 popupCardValidator.enableValidation();
 
-const renderCard = (data, photoTemplate) => {
-  const card = new Card(data, cardSelector);
-  photoTemplate.prepend(card.getView());
+//инициализируем карточку
+const renderCard = (data) => {
+  const card = new Card(data, photoTemplate);
+  galleryContainer.prepend(card.getView()); //возращаем карточку методом getView
 };
+
+initialCards.forEach(function (element) {
+  renderCard(element)
+});
 
 function openPopup(item) {
   item.classList.add("popup_opened");
@@ -79,7 +84,6 @@ function closePopupEsc(event) {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
   }
-  evt.preventDefault();
 }
 
 function handleLike(evt) {
@@ -106,41 +110,17 @@ function handleProfileSubmit(evt) {
 }
 
 function handleCardSubmit(evt) {
+  evt.preventDefault();
   const cardData = {
     name: formCardName.value,
     link: formCardSrc.value,
   };
-  galleryContainer.prepend(createCard(cardData));
+  renderCard(cardData)
   closePopup();
   saveCardButton.classList.add("popup__form-button_inactive");
   saveCardButton.setAttribute("disabled", true);
   formCardElement.reset();
-  evt.preventDefault();
 }
-
-function createCard(cardData) {
-  const photoElement = photoTemplate
-    .querySelector(".gallery__card")
-    .cloneNode(true);
-  const galleryPhoto = photoElement.querySelector(".gallery__photo");
-  const galleryName = photoElement.querySelector(".gallery__name");
-  const galleryDeleteButton = photoElement.querySelector(
-    ".gallery__delete-button"
-  );
-  const galleryLikeButton = photoElement.querySelector(".gallery__like-button");
-  galleryPhoto.src = cardData.link;
-  galleryName.textContent = cardData.name;
-  galleryPhoto.alt = cardData.name;
-  galleryLikeButton.addEventListener("click", handleLike);
-  galleryDeleteButton.addEventListener("click", () => dropObject(photoElement));
-  galleryPhoto.addEventListener("click", openImageView(cardData));
-
-  return photoElement;
-}
-
-initialCards.forEach(function (element) {
-  galleryContainer.append(createCard(element));
-});
 
 openPopupProfileBtn.addEventListener("click", function () {
   formName.value = profileName.textContent;

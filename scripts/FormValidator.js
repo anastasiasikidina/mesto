@@ -67,6 +67,5 @@ export default class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
-    // evt.preventDefault(); преподаватель сказал, что evt тут не нужен
   }
 }
