@@ -65,7 +65,7 @@ const renderCard = (data) => {
 };
 
 initialCards.forEach(function (element) {
-  renderCard(element)
+  renderCard(element);
 });
 
 function openPopup(item) {
@@ -115,7 +115,7 @@ function handleCardSubmit(evt) {
     name: formCardName.value,
     link: formCardSrc.value,
   };
-  renderCard(cardData)
+  renderCard(cardData);
   closePopup();
   saveCardButton.classList.add("popup__form-button_inactive");
   saveCardButton.setAttribute("disabled", true);
