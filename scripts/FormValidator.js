@@ -41,8 +41,8 @@ export default class FormValidator {
     });
   }
 
-  _changeButtonState(inputElement) {
-    if (this._hasInvalidInput(inputElement)) {
+  _changeButtonState() {
+    if (this._hasInvalidInput()) {
       this.disableButtonSubmit();
     } else {
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -55,7 +55,7 @@ export default class FormValidator {
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._changeButtonState(inputElement);
+        this._changeButtonState();
       });
     });
   }

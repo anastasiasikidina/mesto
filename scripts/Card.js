@@ -1,9 +1,20 @@
+const ESC_KEYCODE = 27;
+const handleEscUp = (evt, action) => {
+  const activePopup = document.querySelector(".popup_opened");
+  if (evt.which === ESC_KEYCODE) {
+    activePopup.classList.remove("popup_opened");
+    document.removeEventListener("keyup", handleEscUp);
+  }
+};
+
+const popupView = document.querySelector(".popup_view_foto");
+const imageElement = popupView.querySelector(".popup__image");
+const imageCaption = popupView.querySelector(".popup__caption");
 export default class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -20,6 +31,14 @@ export default class Card {
   _deleteCard() {
     this._element.remove();
   }
+
+  _handleCardClick() {
+    imageElement.src = this._link;
+    imageCaption.textContent = this._name;
+    popupView.classList.add("popup_opened");
+    document.addEventListener("keyup", handleEscUp);
+  }
+
   _setListeners() {
     this._galleryDeleteButton.addEventListener("click", () =>
       this._deleteCard()
@@ -27,9 +46,7 @@ export default class Card {
     this._galleryLikeButton.addEventListener("click", (evt) =>
       this._likeCard(evt)
     );
-    this._galleryPhoto.addEventListener("click", () => {
-      this._handleCardClick(this._name, this._link);
-    });
+    this._galleryPhoto.addEventListener("click", () => this._handleCardClick());
   }
   //создаем метод который возвращает элемент
   getView() {

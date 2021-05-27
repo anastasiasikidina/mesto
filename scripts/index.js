@@ -70,36 +70,20 @@ initialCards.forEach(function (element) {
 
 function openPopup(item) {
   item.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
+  document.addEventListener("keyup", closePopupEsc);
 }
 
 const closePopup = () => {
   const openedPopup = document.querySelector(".popup_opened");
   openedPopup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc);
+  document.removeEventListener("keyup", closePopupEsc);
 };
 
 function closePopupEsc(event) {
   if (event.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
+    closePopup();
   }
-}
-
-function handleLike(evt) {
-  evt.target.classList.toggle("gallery__like-button_active");
-}
-
-function dropObject(element) {
-  element.remove();
-}
-
-function openImageView(element) {
-  return function openImagePopup() {
-    popupImage.src = element.link;
-    popupCaption.textContent = element.name;
-    openPopup(popupView);
-  };
 }
 
 function handleProfileSubmit(evt) {
@@ -117,7 +101,6 @@ function handleCardSubmit(evt) {
   };
   renderCard(cardData);
   closePopup();
-  saveCardButton.classList.add("popup__form-button_inactive");
   saveCardButton.setAttribute("disabled", true);
   formCardElement.reset();
 }
