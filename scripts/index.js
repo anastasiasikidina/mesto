@@ -39,6 +39,11 @@ const galleryContainer = document.querySelector(".gallery__cards");
 
 const photoTemplate = ".template";
 
+function openPopup() {
+  popupView.classList.add("popup_opened");
+  document.addEventListener('keyup', closePopupEsc)
+}
+
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -60,18 +65,13 @@ popupCardValidator.enableValidation();
 
 //инициализируем карточку
 const renderCard = (data) => {
-  const card = new Card(data, photoTemplate);
+  const card = new Card(data, photoTemplate, openPopup);
   galleryContainer.prepend(card.getView()); //возращаем карточку методом getView
 };
 
 initialCards.forEach(function (element) {
   renderCard(element);
 });
-
-function openPopup(item) {
-  item.classList.add("popup_opened");
-  document.addEventListener("keyup", closePopupEsc);
-}
 
 const closePopup = () => {
   const openedPopup = document.querySelector(".popup_opened");
@@ -81,7 +81,7 @@ const closePopup = () => {
 
 function closePopupEsc(event) {
   if (event.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
+    //const openedPopup = document.querySelector(".popup_opened");
     closePopup();
   }
 }
@@ -101,7 +101,6 @@ function handleCardSubmit(evt) {
   };
   renderCard(cardData);
   closePopup();
-  saveCardButton.setAttribute("disabled", true);
   formCardElement.reset();
 }
 
