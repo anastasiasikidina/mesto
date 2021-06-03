@@ -11,7 +11,7 @@ export default class Card {
     this._popupCaption = document.querySelector(".popup__caption");
   }
 
-  // клонируем темплэйт
+  // клонируем темплейт
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)

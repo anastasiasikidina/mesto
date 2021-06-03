@@ -63,7 +63,7 @@ popupCardValidator.enableValidation();
 //инициализируем карточку
 const renderCard = (data) => {
   const card = new Card(data, photoTemplate, openPopup);
-  galleryContainer.prepend(card.getView()); //возращаем карточку методом getView
+  galleryContainer.prepend(card.getView()); // возвращаем карточку методом getView
 };
 
 function openPopup(popupView) {
