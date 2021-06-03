@@ -2,6 +2,8 @@ import Card from "./Card.js";
 import { initialCards } from "./constants.js";
 import FormValidator from "./FormValidator.js";
 
+export { openPopup, popupView };
+
 const popupProfile = document.querySelector(".popup_edit_profile");
 const popupCard = document.querySelector(".popup_add_card");
 const popupView = document.querySelector(".popup_view_foto");
@@ -39,11 +41,6 @@ const galleryContainer = document.querySelector(".gallery__cards");
 
 const photoTemplate = ".template";
 
-function openPopup() {
-  popupView.classList.add("popup_opened");
-  document.addEventListener('keyup', closePopupEsc)
-}
-
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -68,6 +65,11 @@ const renderCard = (data) => {
   const card = new Card(data, photoTemplate, openPopup);
   galleryContainer.prepend(card.getView()); //возращаем карточку методом getView
 };
+
+function openPopup(popupView) {
+  popupView.classList.add("popup_opened");
+  document.addEventListener("keyup", closePopupEsc);
+}
 
 initialCards.forEach(function (element) {
   renderCard(element);
