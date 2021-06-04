@@ -1,5 +1,5 @@
-//Импортируем функции открытия попапа и селектор попапа в параметры функции
-import { openPopup, popupView } from "./index.js";
+//Импортируем функции открытия попапа и селектор попапа
+import { openPopup, popupView } from "../index.js";
 
 export default class Card {
   constructor(data, cardSelector, handleCardClick) {
@@ -11,7 +11,7 @@ export default class Card {
     this._popupCaption = document.querySelector(".popup__caption");
   }
 
-  // клонируем темплэйт
+  // клонируем темплейт
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -50,8 +50,8 @@ export default class Card {
   //создаем метод который возвращает элемент
   getView() {
     this._element = this._getTemplate(); //возвращаем
-
-    this._galleryName = this._element.querySelector(".gallery__name"); //находим элементы в шаблоне
+  //находим элементы в шаблоне
+    this._galleryName = this._element.querySelector(".gallery__name");
     this._galleryPhoto = this._element.querySelector(".gallery__photo");
     this._galleryDeleteButton = this._element.querySelector(
       ".gallery__delete-button"

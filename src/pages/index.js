@@ -1,6 +1,13 @@
-import Card from "./Card.js";
-import { initialCards } from "./constants.js";
-import FormValidator from "./FormValidator.js";
+import './pages/index.css';
+
+import Card from "../components/Card.js";
+import { initialCards } from "../components/constants.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 export { openPopup, popupView };
 
@@ -63,7 +70,7 @@ popupCardValidator.enableValidation();
 //инициализируем карточку
 const renderCard = (data) => {
   const card = new Card(data, photoTemplate, openPopup);
-  galleryContainer.prepend(card.getView()); //возращаем карточку методом getView
+  galleryContainer.prepend(card.getView()); // возвращаем карточку методом getView
 };
 
 function openPopup(popupView) {
@@ -83,8 +90,7 @@ const closePopup = () => {
 
 function closePopupEsc(event) {
   if (event.key === "Escape") {
-    //const openedPopup = document.querySelector(".popup_opened");
-    closePopup();
+     closePopup();
   }
 }
 
@@ -101,7 +107,6 @@ function handleCardSubmit(evt) {
     name: formCardName.value,
     link: formCardSrc.value,
   };
-  popupCardValidator.disableButtonSubmit();
   renderCard(cardData);
   closePopup();
   formCardElement.reset();
