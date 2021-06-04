@@ -107,6 +107,7 @@ function handleCardSubmit(evt) {
     name: formCardName.value,
     link: formCardSrc.value,
   };
+  popupCardValidator.disableButtonSubmit();
   renderCard(cardData);
   closePopup();
   formCardElement.reset();
