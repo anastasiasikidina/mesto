@@ -1,5 +1,5 @@
 //Импортируем функции открытия попапа и селектор попапа
-import { openPopup, popupView } from "../index.js";
+import { openPopup, popupView } from "../pages/index.js";
 
 export default class Card {
   constructor(data, cardSelector, handleCardClick) {

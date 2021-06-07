@@ -1,4 +1,4 @@
-import './pages/index.css';
+import '../pages/index.css';
 
 import Card from "../components/Card.js";
 import { initialCards } from "../components/constants.js";
