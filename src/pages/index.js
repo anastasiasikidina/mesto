@@ -1,15 +1,15 @@
-import '../pages/index.css';
+import "../pages/index.css";
 
 import Card from "../components/Card.js";
 import { initialCards } from "../components/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup.js";
+//import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 
-export { openPopup, popupView };
+//export { openPopup, popupView };
 
 const popupProfile = document.querySelector(".popup_edit_profile");
 const popupCard = document.querySelector(".popup_add_card");
@@ -21,7 +21,7 @@ const popupOverlayViewFoto = document.querySelector(
   ".popup__overlay-view-foto"
 );
 
-const openPopupProfileBtn = document.querySelector(".profile__edit-button");
+const profileEditBtn = document.querySelector(".profile__edit-button");
 const openPopupCardBtn = document.querySelector(".profile__add-button");
 
 const closePopupProfileBtn = document.querySelector(".popup__close-button");
@@ -57,6 +57,79 @@ const config = {
   errorClass: "popup__form-message-error_active",
 };
 
+//создаем карточку
+const renderCard = (data) => {
+  const newCard = new Card(data, photoTemplate, (name, link) =>
+    popupWithImage.open(link, name)
+  );
+
+  return newCard.renderCard();
+};
+
+//добавление карточек в разметку
+const cardList = new Section(
+  {
+    data: initialCards,
+    renderer: (data) => {
+      cardList.addItem(renderCard(data));
+    },
+  },
+  galleryContainer
+);
+
+//открытие модального окна карточки
+const popupWithImage = new PopupWithImage(".popup_view_foto");
+popupWithImage.setEventListeners();
+
+//редактирования профиля
+function handleProfileSubmit(data) {
+  profileName.textContent = data["edit-profile-name"].values;
+  profileJob.textContent = data["edit-profile-job"].value;
+  editFormPopup.close();
+}
+
+const editFormPopup = new PopupWithForm(
+  ".popup_edit_profile",
+  handleProfileSubmit
+);
+editFormPopup.setEventListeners();
+
+//добавления карточки
+function handleCardSubmit(data) {
+  evt.preventDefault();
+  const cardData = {
+    name: data["edit-card-name"].value,
+    link: data["edit-card-link"].value,
+  };
+  popupCardValidator.disableButtonSubmit();
+  renderCard(cardData);
+  addCardPopup.close();
+}
+
+const addCardPopup = new PopupWithForm(".popup_add_card", handleProfileSubmit);
+addCardPopup.setEventListeners();
+
+//получение данных профиля
+const userInfo = new UserInfo({
+  nameElementSelector: profileName,
+  professionElementSelector: profileJob,
+});
+
+const getProfileInfo = () => {
+  const profileInfo = userInfo.getUserInfo();
+  nameInput.value = profileInfo.nameElement;
+  aboutInput.value = profileInfo.professionElement;
+  profileFormValidator.resetValidation();
+  editFormPopup.open();
+};
+
+profileEditBtn.addEventListener("click", getProfileInfo);
+
+// Вешаем слушатели на попапы
+popupWithImage.setEventListeners();
+editFormPopup.setEventListeners();
+addCardPopup.setEventListeners();
+
 // Валидация попапа при редактировании профиля
 
 const popupProfileValidator = new FormValidator(config, popupProfile);
@@ -67,10 +140,13 @@ popupProfileValidator.enableValidation();
 const popupCardValidator = new FormValidator(config, popupCard);
 popupCardValidator.enableValidation();
 
+/*
 //инициализируем карточку
 const renderCard = (data) => {
-  const card = new Card(data, photoTemplate, openPopup);
-  galleryContainer.prepend(card.getView()); // возвращаем карточку методом getView
+  const card = new Card(data, photoTemplate, openPopup, (name, link) => popupWithImage.open(link, name)); 
+
+  //const card = new Card(data, photoTemplate, openPopup);
+  //galleryContainer.prepend(card.getView()); // возвращаем карточку методом getView
 };
 
 function openPopup(popupView) {
@@ -128,3 +204,4 @@ popupOverlayAddCard.addEventListener("click", closePopup);
 popupOverlayViewFoto.addEventListener("click", closePopup);
 formProfileElement.addEventListener("submit", handleProfileSubmit);
 formCardElement.addEventListener("submit", handleCardSubmit);
+*/

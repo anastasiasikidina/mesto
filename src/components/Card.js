@@ -1,5 +1,5 @@
 //Импортируем функции открытия попапа и селектор попапа
-import { openPopup, popupView } from "../pages/index.js";
+//import { openPopup, popupView } from "../pages/index.js";
 
 export default class Card {
   constructor(data, cardSelector, handleCardClick) {
@@ -28,6 +28,7 @@ export default class Card {
   _deleteCard() {
     this._element.remove();
   }
+  /*
   //наполняем данными
   _handlePhotoCardClick() {
     this._popupImage.src = this._link;
@@ -35,7 +36,7 @@ export default class Card {
     this._popupCaption.textContent = this._name;
     openPopup(popupView);
   }
-
+*/
   _setListeners() {
     this._galleryDeleteButton.addEventListener("click", () =>
       this._deleteCard()
@@ -44,7 +45,7 @@ export default class Card {
       this._likeCard(evt)
     );
     this._galleryPhoto.addEventListener("click", () =>
-      this._handlePhotoCardClick()
+      this._handleCardClick(this._name, this._link)
     );
   }
   //создаем метод который возвращает элемент
