@@ -51,7 +51,7 @@ export default class Card {
   //создаем метод который возвращает элемент
   getView() {
     this._element = this._getTemplate(); //возвращаем
-  //находим элементы в шаблоне
+    //находим элементы в шаблоне
     this._galleryName = this._element.querySelector(".gallery__name");
     this._galleryPhoto = this._element.querySelector(".gallery__photo");
     this._galleryDeleteButton = this._element.querySelector(
