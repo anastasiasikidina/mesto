@@ -1,32 +1,46 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+  constructor(popupSelector, submitCallBack) {
     super(popupSelector);
-    this._handleFormSubmit = handleFormSubmit;
-    this._form = this._popupElement.querySelector(".popup__form");
-    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._submitCallBack = submitCallBack;
+    this._attributes = {};
+    this.submutButtonElement = this.popupElement.querySelector(
+      ".popup__save-button"
+    );
+    this.inputsList = this.popupElement.querySelectorAll(".popup__input");
   }
 
   _getInputValues() {
-    this._inputValues = {};
-    this._inputList.forEach(
-      (input) => (this._inputValues[input.name] = input.value)
-    );
+    this.inputsList.forEach((node) => {
+      this._attributes[node.getAttribute("name")] = node.value;
+    });
+  }
 
-    return this._inputValues;
+  _clearInputValues() {
+    this.inputsList.forEach((node) => {
+      node.value = "";
+    });
+  }
+
+  _handleCardSubmit(e) {
+    e.preventDefault();
+    this._getInputValues();
+    this.submutButtonElement.value = "Cохранение...";
+    this._submitCallBack(this._attributes);
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-    });
+    this.popupElement.addEventListener(
+      "submit",
+      this._handleCardSubmit.bind(this)
+    );
   }
 
   close() {
+    this._clearInputValues();
+    this.submutButtonElement.value = "Сохранить";
     super.close();
-    this._form.reset();
   }
 }

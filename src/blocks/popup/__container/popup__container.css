@@ -1,0 +1,16 @@
+.popup__container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+@media all and (max-width: 920px) {
+    .popup__container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media all and (max-width: 426px) {
+    .popup__container {
+      grid-template-columns: auto;
+    }
+}
